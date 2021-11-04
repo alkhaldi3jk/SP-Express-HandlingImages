@@ -7,17 +7,23 @@ const ProductSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    slug: String,
+    // slug: {type:String},
     image: { type: String },
     price: {
       type: Number,
       default: 5,
     },
     description: String,
-    color: String,
+    color: { type: String,
+      //  enum: ["black", "red"]
+       },
     quantity: {
       type: Number,
       min: 0,
+    },
+    shop: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Shop",
     },
   },
   {
