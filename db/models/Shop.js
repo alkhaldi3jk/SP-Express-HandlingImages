@@ -7,7 +7,7 @@ const ShopSchema = mongoose.Schema({
     required: true,
   },
   image: { type: String },
-  // slug: {type:String},
+  slug: {type:String},
   products: [{ type: mongoose.Schema.Types.ObjectId, ref: "Product" }],
 });
 

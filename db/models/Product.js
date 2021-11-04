@@ -7,16 +7,14 @@ const ProductSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    // slug: {type:String},
+    slug: { type: String },
     image: { type: String },
     price: {
       type: Number,
       default: 5,
     },
     description: String,
-    color: { type: String,
-      //  enum: ["black", "red"]
-       },
+    color: { type: String, enum: ["black", "red"] },
     quantity: {
       type: Number,
       min: 0,

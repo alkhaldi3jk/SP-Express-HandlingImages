@@ -1,7 +1,7 @@
 const User = require("../../db/models/User");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const keys= require("../../config/keys")
+const keys = require("../../config/keys");
 
 exports.signup = async (req, res, next) => {
   try {
@@ -23,7 +23,6 @@ exports.signup = async (req, res, next) => {
   } catch (error) {
     next(error);
   }
-
 };
 
 const generateToken = (user) => {
@@ -35,3 +34,15 @@ const generateToken = (user) => {
   const token = jwt.sign(payload, keys.JWT_SECRET);
   return token;
 };
+
+
+exports.signin= async (req, res, next)=>{
+  
+  console.log(res)
+  try {
+    const token = generateToken(req.user);
+    return res.status(201).json({token})
+  } catch (error) {
+    next(error)
+  }
+}

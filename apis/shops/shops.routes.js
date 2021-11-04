@@ -12,11 +12,12 @@ const router = express.Router();
 
 router.get("/", shopListFetch);
 
-router.post("/", shopCreate);
+router.post("/",    upload.single("image"),
+shopCreate);
 router.post(
   "/:shopId/products",
-  //   upload.single("image"),
-  productCreate
+    upload.single("image"),
+    productCreate
 );
 
 module.exports = router;

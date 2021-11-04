@@ -2,6 +2,8 @@ const express = require("express");
 const productRoutes = require("./apis/products/routes");
 const shopsRoutes = require("./apis/shops/shops.routes");
 const userRoutes = require("./apis/user/user.routes");
+const passport=require("passport")
+const {localStrategy}=require("./middleware/passport")
 
 const connectDB = require("./db/database");
 const morgan = require("morgan");
@@ -24,7 +26,10 @@ app.use((req, res, next) => {
     res.status(400).json({ message: "I HATE BROCCOLI!! KEEFY! " });
   else next();
 });
+// passport
 
+app.use(passport.initialize())
+passport.use(localStrategy)
 // Routes
 app.use("/api/products", productRoutes);
 app.use("/api/shops", shopsRoutes);
